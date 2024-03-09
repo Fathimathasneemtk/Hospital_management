@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block title%}Login{%endblock title%}
+{%block content%}
+{% include 'navbar.html'%}
+{%if error == "no"%}
+    <script>
+        alert("You logged in sucessfully.")
+        window.location="{% url 'index' %}"
+    </script>
+{% endif%}
+{% if error == "yes"%}
+    <script>
+        alert("invalid login credentials.")
+    </script>
+{% endif %}
+<div class="container w-75">
+    <h2 class="text-center">Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label class="form-control" >Username</label>
+        <input type="text" class="form-control" name="uname">
+        <label class="form-control" >Password</label>
+        <input class="form-control" type="password" name="pwd">
+        <input class="form-control btn btn-primary" type="submit" >
+
+    </form>
+
+</div>
+{% include 'footer.html'%}
+{%endblock content%}

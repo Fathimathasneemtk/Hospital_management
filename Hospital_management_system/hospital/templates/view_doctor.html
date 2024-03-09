@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%block content%}
+{% include 'navbar.html'%}
+<h1 class="text-center">DOCTORS</h1>
+<div class="container mt-5 display" >
+    <table class="table table-striped" id="example">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Special</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in d%}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.mobile}}</td>
+                <td>{{i.special}}</td>
+                <td><a class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')" href="{% url 'delete_doctor' i.id%}">Delete</a></td>
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+{%include 'footer.html'%}
+{%endblock content%}
